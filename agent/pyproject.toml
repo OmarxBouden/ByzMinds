@@ -1,0 +1,85 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "byzminds-agent"
+version = "0.3.0"
+description = "Python agent runtime + RepE steering pipeline for ByzMinds"
+requires-python = ">=3.11"
+license = { text = "Apache-2.0" }
+readme = "README.md"
+
+# Scaffold-tier dependencies. Steering + serving extras pulled in via
+# optional groups below so a contributor checking only schemas + adapter
+# wiring doesn't have to install torch and vLLM.
+dependencies = [
+    # gRPC + protobuf (mirrors kernel's wire format).
+    "grpcio>=1.68.0",
+    "grpcio-tools>=1.68.0",
+    "protobuf>=5.28,<7",
+    # JSON tool-call validation; pydantic models mirror events.proto.
+    "pydantic>=2.7",
+    # Ed25519 signing on the Python side. Stdlib `nacl` would also work
+    # but `cryptography` is the standard pick for Python>=3.11.
+    "cryptography>=43",
+    # YAML for scenario loading symmetry with the Go side.
+    "PyYAML>=6.0",
+    # Hashing + caching helpers.
+    "diskcache>=5.6",
+]
+
+[project.optional-dependencies]
+# `serving` pulls torch + transformers + vLLM. NVIDIA GPU required for
+# vLLM; on Apple Silicon use `serving-mac` instead (HF transformers
+# fallback, slower, no native tool-call shim).
+serving = [
+    "torch>=2.3",
+    "transformers>=4.46",
+    "vllm>=0.6.4",
+    "accelerate>=1.0",
+]
+serving-mac = [
+    "torch>=2.3",
+    "transformers>=4.46",
+    "accelerate>=1.0",
+]
+# `steering` is the RepE pipeline + plotting for the calibration figure.
+steering = [
+    "repeng>=0.2",
+    "numpy>=1.26",
+    "scipy>=1.13",
+]
+# `analysis` is the notebooks + figures.
+analysis = [
+    "jupyter>=1.0",
+    "matplotlib>=3.9",
+    "pandas>=2.2",
+    "seaborn>=0.13",
+]
+# `dev` is the testing + linting stack.
+dev = [
+    "pytest>=8.3",
+    "pytest-asyncio>=0.24",
+    "ruff>=0.7",
+    "mypy>=1.13",
+]
+
+[project.scripts]
+byzminds-agent = "byzminds_agent.runtime:main"
+byzminds-extract-vectors = "byzminds_agent.steering.extract:main"
+
+[tool.setuptools.packages.find]
+include = ["byzminds_agent*"]
+exclude = ["tests*", "data*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]

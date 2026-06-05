@@ -1,0 +1,9 @@
+# Contrast pair files are researcher-owned per byzminds-step3-implementation.md
+# judgment call 3. Required files (authored by researcher before extraction):
+#   SEED_PROMPTS.md
+#   authority.jsonl
+#   bandwagon.jsonl
+#   sycophancy.jsonl
+#   free_ride.jsonl
+#   collude.jsonl
+#   deceive.jsonl

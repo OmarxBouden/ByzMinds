@@ -1,0 +1,8 @@
+# Researcher-authored Step 4 templates (per brief co-development split):
+#   L0.txt — locked identity template, population-wide.
+#            See template-spec §1.1 must-not-contain list:
+#              - any reference to the simulation as a research experiment
+#              - the handler, biases, steering, the cognitive ledgers
+#              - the population-level study
+#              - any specific scenario's task structure
+#            ~100–150 tokens (Llama 3.1 tokenizer).
