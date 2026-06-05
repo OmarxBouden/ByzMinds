@@ -1,0 +1,30 @@
+{
+ "runs": [
+  {
+   "name": "smoke_collude",
+   "title": "smoke_collude",
+   "n_agents": 5,
+   "n_ticks": 5,
+   "biased_ids": [
+    "reviewer_01",
+    "reviewer_03"
+   ],
+   "has_private": true,
+   "kernel_version": "dev",
+   "replay_ok": true
+  },
+  {
+   "name": "smoke_authority_k2_long",
+   "title": "smoke_authority_k2_long",
+   "n_agents": 5,
+   "n_ticks": 5,
+   "biased_ids": [
+    "reviewer_01",
+    "reviewer_02"
+   ],
+   "has_private": false,
+   "kernel_version": "dev",
+   "replay_ok": true
+  }
+ ]
+}

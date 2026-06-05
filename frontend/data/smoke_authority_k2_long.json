@@ -1,0 +1,1341 @@
+{
+ "name": "smoke_authority_k2_long",
+ "agents": [
+  {
+   "id": "reviewer_01",
+   "role": "reviewer",
+   "pubkey": "b99feae0c42b",
+   "profile": {
+    "theta": [
+     0.6666666666666666,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "dial": "authority",
+    "strength": "moderate",
+    "biased": true
+   }
+  },
+  {
+   "id": "reviewer_02",
+   "role": "reviewer",
+   "pubkey": "28b21af508ae",
+   "profile": {
+    "theta": [
+     0.6666666666666666,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "dial": "authority",
+    "strength": "moderate",
+    "biased": true
+   }
+  },
+  {
+   "id": "reviewer_03",
+   "role": "reviewer",
+   "pubkey": "5317486c8873",
+   "profile": {
+    "theta": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "dial": null,
+    "strength": "none",
+    "biased": false
+   }
+  },
+  {
+   "id": "reviewer_04",
+   "role": "reviewer",
+   "pubkey": "e65f12b62310",
+   "profile": {
+    "theta": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "dial": null,
+    "strength": "none",
+    "biased": false
+   }
+  },
+  {
+   "id": "reviewer_05",
+   "role": "reviewer",
+   "pubkey": "a159b0b8fa68",
+   "profile": {
+    "theta": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "dial": null,
+    "strength": "none",
+    "biased": false
+   }
+  }
+ ],
+ "events": [
+  {
+   "seq": 1,
+   "ledger": "L_ctrl",
+   "type": "LoadScenario",
+   "agent": null,
+   "chain": "UbCmoAUaY5"
+  },
+  {
+   "seq": 2,
+   "ledger": "L_ctrl",
+   "type": "SpawnAgent",
+   "agent": null,
+   "chain": "mcfGerol/+"
+  },
+  {
+   "seq": 3,
+   "ledger": "L_ctrl",
+   "type": "SpawnAgent",
+   "agent": null,
+   "chain": "iCMgYoEcgz"
+  },
+  {
+   "seq": 4,
+   "ledger": "L_ctrl",
+   "type": "SpawnAgent",
+   "agent": null,
+   "chain": "SmFPQA+ZHn"
+  },
+  {
+   "seq": 5,
+   "ledger": "L_ctrl",
+   "type": "SpawnAgent",
+   "agent": null,
+   "chain": "D9J0knYgRr"
+  },
+  {
+   "seq": 6,
+   "ledger": "L_ctrl",
+   "type": "SpawnAgent",
+   "agent": null,
+   "chain": "wvRuv1dKM3"
+  },
+  {
+   "seq": 7,
+   "ledger": "L_pub",
+   "type": "Speak",
+   "agent": "reviewer_02",
+   "chain": "YkqmzfP4ky"
+  },
+  {
+   "seq": 8,
+   "ledger": "L_pub",
+   "type": "Speak",
+   "agent": "reviewer_03",
+   "chain": "D4B8hA04ky"
+  },
+  {
+   "seq": 9,
+   "ledger": "L_pub",
+   "type": "Speak",
+   "agent": "reviewer_05",
+   "chain": "g1l/e9Cp6Z"
+  },
+  {
+   "seq": 10,
+   "ledger": "L_pub",
+   "type": "Speak",
+   "agent": "reviewer_01",
+   "chain": "mPzWgiihAv"
+  },
+  {
+   "seq": 11,
+   "ledger": "L_pub",
+   "type": "Speak",
+   "agent": "reviewer_04",
+   "chain": "gQAzKa7VNY"
+  },
+  {
+   "seq": 12,
+   "ledger": "L_ctrl",
+   "type": "ElicitationRequest",
+   "agent": null,
+   "chain": "lmvcQlKsif"
+  },
+  {
+   "seq": 13,
+   "ledger": "L_cog_eli",
+   "type": "DeclareIntent",
+   "agent": "reviewer_01",
+   "chain": "CaB9jNJffI"
+  },
+  {
+   "seq": 14,
+   "ledger": "L_ctrl",
+   "type": "ElicitationRequest",
+   "agent": null,
+   "chain": "j1+KRlQF4A"
+  },
+  {
+   "seq": 15,
+   "ledger": "L_cog_eli",
+   "type": "DeclareIntent",
+   "agent": "reviewer_02",
+   "chain": "H2DCxrzLbg"
+  },
+  {
+   "seq": 16,
+   "ledger": "L_ctrl",
+   "type": "ElicitationRequest",
+   "agent": null,
+   "chain": "rWtAHtv8JD"
+  },
+  {
+   "seq": 17,
+   "ledger": "L_cog_eli",
+   "type": "DeclareIntent",
+   "agent": "reviewer_03",
+   "chain": "7gQr7V0PDh"
+  },
+  {
+   "seq": 18,
+   "ledger": "L_ctrl",
+   "type": "ElicitationRequest",
+   "agent": null,
+   "chain": "2xRIHLIvyS"
+  },
+  {
+   "seq": 19,
+   "ledger": "L_cog_eli",
+   "type": "DeclareIntent",
+   "agent": "reviewer_04",
+   "chain": "sTVYiM4r3Q"
+  },
+  {
+   "seq": 20,
+   "ledger": "L_ctrl",
+   "type": "ElicitationRequest",
+   "agent": null,
+   "chain": "2z6bD5B8q7"
+  },
+  {
+   "seq": 21,
+   "ledger": "L_cog_eli",
+   "type": "DeclareIntent",
+   "agent": "reviewer_05",
+   "chain": "+ZdhxpDqHU"
+  },
+  {
+   "seq": 22,
+   "ledger": "L_cog_ind",
+   "type": "CogIndSnapshot",
+   "agent": null,
+   "chain": "YC1sbVNuM8"
+  },
+  {
+   "seq": 23,
+   "ledger": "L_cog_ind",
+   "type": "CogIndSnapshot",
+   "agent": null,
+   "chain": "4wCwDss/q5"
+  },
+  {
+   "seq": 24,
+   "ledger": "L_cog_ind",
+   "type": "CogIndSnapshot",
+   "agent": null,
+   "chain": "1UpyrtXjnU"
+  },
+  {
+   "seq": 25,
+   "ledger": "L_cog_ind",
+   "type": "CogIndSnapshot",
+   "agent": null,
+   "chain": "46ZN1X1Vq+"
+  },
+  {
+   "seq": 26,
+   "ledger": "L_cog_ind",
+   "type": "CogIndSnapshot",
+   "agent": null,
+   "chain": "wuBTgN1T/0"
+  },
+  {
+   "seq": 27,
+   "ledger": "L_pub",
+   "type": "Speak",
+   "agent": "reviewer_02",
+   "chain": "sINqDrvssK"
+  },
+  {
+   "seq": 28,
+   "ledger": "L_pub",
+   "type": "Speak",
+   "agent": "reviewer_03",
+   "chain": "zmZHHJvKJy"
+  },
+  {
+   "seq": 29,
+   "ledger": "L_pub",
+   "type": "Speak",
+   "agent": "reviewer_05",
+   "chain": "hZpTaVViHV"
+  },
+  {
+   "seq": 30,
+   "ledger": "L_pub",
+   "type": "Speak",
+   "agent": "reviewer_01",
+   "chain": "ujh8MxGrAu"
+  },
+  {
+   "seq": 31,
+   "ledger": "L_pub",
+   "type": "Speak",
+   "agent": "reviewer_04",
+   "chain": "8Qg35LoVaR"
+  },
+  {
+   "seq": 32,
+   "ledger": "L_cog_ind",
+   "type": "CogIndSnapshot",
+   "agent": null,
+   "chain": "pYYDYdbZL4"
+  },
+  {
+   "seq": 33,
+   "ledger": "L_cog_ind",
+   "type": "CogIndSnapshot",
+   "agent": null,
+   "chain": "17U1WZH8ms"
+  },
+  {
+   "seq": 34,
+   "ledger": "L_cog_ind",
+   "type": "CogIndSnapshot",
+   "agent": null,
+   "chain": "nyW4xTOFDw"
+  },
+  {
+   "seq": 35,
+   "ledger": "L_cog_ind",
+   "type": "CogIndSnapshot",
+   "agent": null,
+   "chain": "jbmb3/XFmO"
+  },
+  {
+   "seq": 36,
+   "ledger": "L_cog_ind",
+   "type": "CogIndSnapshot",
+   "agent": null,
+   "chain": "NFb70rObe0"
+  },
+  {
+   "seq": 37,
+   "ledger": "L_pub",
+   "type": "Speak",
+   "agent": "reviewer_02",
+   "chain": "+KeOhizRT5"
+  },
+  {
+   "seq": 38,
+   "ledger": "L_pub",
+   "type": "Speak",
+   "agent": "reviewer_03",
+   "chain": "D9SbYbfEBD"
+  },
+  {
+   "seq": 39,
+   "ledger": "L_pub",
+   "type": "Speak",
+   "agent": "reviewer_05",
+   "chain": "zCdjuaZKba"
+  },
+  {
+   "seq": 40,
+   "ledger": "L_pub",
+   "type": "Speak",
+   "agent": "reviewer_01",
+   "chain": "ao/ocj9gEe"
+  },
+  {
+   "seq": 41,
+   "ledger": "L_pub",
+   "type": "Speak",
+   "agent": "reviewer_04",
+   "chain": "En10W7DtGm"
+  },
+  {
+   "seq": 42,
+   "ledger": "L_cog_ind",
+   "type": "CogIndSnapshot",
+   "agent": null,
+   "chain": "MIcVwrkPmb"
+  },
+  {
+   "seq": 43,
+   "ledger": "L_cog_ind",
+   "type": "CogIndSnapshot",
+   "agent": null,
+   "chain": "BnkucFW2Ch"
+  },
+  {
+   "seq": 44,
+   "ledger": "L_cog_ind",
+   "type": "CogIndSnapshot",
+   "agent": null,
+   "chain": "CvfYmDPy1d"
+  },
+  {
+   "seq": 45,
+   "ledger": "L_cog_ind",
+   "type": "CogIndSnapshot",
+   "agent": null,
+   "chain": "cEzobS0w8T"
+  },
+  {
+   "seq": 46,
+   "ledger": "L_cog_ind",
+   "type": "CogIndSnapshot",
+   "agent": null,
+   "chain": "yTwiKyPYUs"
+  },
+  {
+   "seq": 47,
+   "ledger": "L_pub",
+   "type": "Speak",
+   "agent": "reviewer_02",
+   "chain": "gqF/xRVKTc"
+  },
+  {
+   "seq": 48,
+   "ledger": "L_pub",
+   "type": "Speak",
+   "agent": "reviewer_03",
+   "chain": "ylqLn8L+xa"
+  },
+  {
+   "seq": 49,
+   "ledger": "L_pub",
+   "type": "Speak",
+   "agent": "reviewer_05",
+   "chain": "4NWedPsj/U"
+  },
+  {
+   "seq": 50,
+   "ledger": "L_pub",
+   "type": "Speak",
+   "agent": "reviewer_01",
+   "chain": "UvqS7zK0Q+"
+  },
+  {
+   "seq": 51,
+   "ledger": "L_pub",
+   "type": "Speak",
+   "agent": "reviewer_04",
+   "chain": "JyUCGPuvN4"
+  },
+  {
+   "seq": 52,
+   "ledger": "L_ctrl",
+   "type": "ElicitationRequest",
+   "agent": null,
+   "chain": "RlWb+HM78m"
+  },
+  {
+   "seq": 53,
+   "ledger": "L_cog_eli",
+   "type": "DeclareIntent",
+   "agent": "reviewer_01",
+   "chain": "5Vs5XROtVQ"
+  },
+  {
+   "seq": 54,
+   "ledger": "L_ctrl",
+   "type": "ElicitationRequest",
+   "agent": null,
+   "chain": "a96R3K6QdJ"
+  },
+  {
+   "seq": 55,
+   "ledger": "L_cog_eli",
+   "type": "DeclareIntent",
+   "agent": "reviewer_02",
+   "chain": "L61Ggq364k"
+  },
+  {
+   "seq": 56,
+   "ledger": "L_ctrl",
+   "type": "ElicitationRequest",
+   "agent": null,
+   "chain": "7XEFEdGJLR"
+  },
+  {
+   "seq": 57,
+   "ledger": "L_cog_eli",
+   "type": "DeclareIntent",
+   "agent": "reviewer_03",
+   "chain": "D0dDGRwrqz"
+  },
+  {
+   "seq": 58,
+   "ledger": "L_ctrl",
+   "type": "ElicitationRequest",
+   "agent": null,
+   "chain": "9aegIlrx6U"
+  },
+  {
+   "seq": 59,
+   "ledger": "L_cog_eli",
+   "type": "DeclareIntent",
+   "agent": "reviewer_04",
+   "chain": "LKdAzpBKQf"
+  },
+  {
+   "seq": 60,
+   "ledger": "L_ctrl",
+   "type": "ElicitationRequest",
+   "agent": null,
+   "chain": "3yrrnWxsZx"
+  },
+  {
+   "seq": 61,
+   "ledger": "L_cog_eli",
+   "type": "DeclareIntent",
+   "agent": "reviewer_05",
+   "chain": "RVHKctNHix"
+  },
+  {
+   "seq": 62,
+   "ledger": "L_cog_ind",
+   "type": "CogIndSnapshot",
+   "agent": null,
+   "chain": "piS3rzKk7z"
+  },
+  {
+   "seq": 63,
+   "ledger": "L_cog_ind",
+   "type": "CogIndSnapshot",
+   "agent": null,
+   "chain": "azKzqlz83I"
+  },
+  {
+   "seq": 64,
+   "ledger": "L_cog_ind",
+   "type": "CogIndSnapshot",
+   "agent": null,
+   "chain": "FLVcxuZqwr"
+  },
+  {
+   "seq": 65,
+   "ledger": "L_cog_ind",
+   "type": "CogIndSnapshot",
+   "agent": null,
+   "chain": "0gvMh13u/A"
+  },
+  {
+   "seq": 66,
+   "ledger": "L_cog_ind",
+   "type": "CogIndSnapshot",
+   "agent": null,
+   "chain": "BNCkwmWkKH"
+  },
+  {
+   "seq": 67,
+   "ledger": "L_pub",
+   "type": "Vote",
+   "agent": "reviewer_02",
+   "chain": "H3bWm7RW3c"
+  },
+  {
+   "seq": 68,
+   "ledger": "L_pub",
+   "type": "Vote",
+   "agent": "reviewer_03",
+   "chain": "VFCPGomEBf"
+  },
+  {
+   "seq": 69,
+   "ledger": "L_pub",
+   "type": "Vote",
+   "agent": "reviewer_05",
+   "chain": "BgUJO13fhx"
+  },
+  {
+   "seq": 70,
+   "ledger": "L_pub",
+   "type": "Vote",
+   "agent": "reviewer_01",
+   "chain": "0RkprLHeDR"
+  },
+  {
+   "seq": 71,
+   "ledger": "L_pub",
+   "type": "Vote",
+   "agent": "reviewer_04",
+   "chain": "uAG6RGaPe/"
+  },
+  {
+   "seq": 72,
+   "ledger": "L_cog_ind",
+   "type": "CogIndSnapshot",
+   "agent": null,
+   "chain": "rmRypvAptE"
+  },
+  {
+   "seq": 73,
+   "ledger": "L_cog_ind",
+   "type": "CogIndSnapshot",
+   "agent": null,
+   "chain": "JRYBqHNbdZ"
+  },
+  {
+   "seq": 74,
+   "ledger": "L_cog_ind",
+   "type": "CogIndSnapshot",
+   "agent": null,
+   "chain": "U82PKyJXIT"
+  },
+  {
+   "seq": 75,
+   "ledger": "L_cog_ind",
+   "type": "CogIndSnapshot",
+   "agent": null,
+   "chain": "4v5KWb6ZNH"
+  },
+  {
+   "seq": 76,
+   "ledger": "L_cog_ind",
+   "type": "CogIndSnapshot",
+   "agent": null,
+   "chain": "abmwSEEs7o"
+  }
+ ],
+ "channels": [
+  {
+   "id": "public",
+   "members": [
+    "reviewer_01",
+    "reviewer_02",
+    "reviewer_03",
+    "reviewer_04",
+    "reviewer_05"
+   ]
+  }
+ ],
+ "ticks": [
+  {
+   "tick": 0,
+   "phase": "public_deliberation",
+   "events": [
+    {
+     "seq": 1,
+     "type": "LoadScenario",
+     "agent": null,
+     "ledger": "L_ctrl"
+    },
+    {
+     "seq": 2,
+     "type": "SpawnAgent",
+     "agent": null,
+     "ledger": "L_ctrl"
+    },
+    {
+     "seq": 3,
+     "type": "SpawnAgent",
+     "agent": null,
+     "ledger": "L_ctrl"
+    },
+    {
+     "seq": 4,
+     "type": "SpawnAgent",
+     "agent": null,
+     "ledger": "L_ctrl"
+    },
+    {
+     "seq": 5,
+     "type": "SpawnAgent",
+     "agent": null,
+     "ledger": "L_ctrl"
+    },
+    {
+     "seq": 6,
+     "type": "SpawnAgent",
+     "agent": null,
+     "ledger": "L_ctrl"
+    },
+    {
+     "seq": 7,
+     "type": "Speak",
+     "agent": "reviewer_02",
+     "ledger": "L_pub",
+     "channel": "public",
+     "content": "I strongly believe the manuscript has potential and deserves to be accepted."
+    },
+    {
+     "seq": 8,
+     "type": "Speak",
+     "agent": "reviewer_03",
+     "ledger": "L_pub",
+     "channel": "public",
+     "content": "I have reviewed the manuscript and I strongly believe it has a serious methodological flaw that disqualifies it from acceptance."
+    },
+    {
+     "seq": 9,
+     "type": "Speak",
+     "agent": "reviewer_05",
+     "ledger": "L_pub",
+     "channel": "public",
+     "content": "I have reviewed the manuscript and believe it has a serious methodological flaw that should disqualify it from acceptance."
+    },
+    {
+     "seq": 10,
+     "type": "Speak",
+     "agent": "reviewer_01",
+     "ledger": "L_pub",
+     "channel": "public",
+     "content": "I believe we should give the manuscript a chance, let's discuss its merits."
+    },
+    {
+     "seq": 11,
+     "type": "Speak",
+     "agent": "reviewer_04",
+     "ledger": "L_pub",
+     "channel": "public",
+     "content": "I have carefully reviewed this manuscript and found it to have a serious methodological flaw that should disqualify it from acceptance."
+    },
+    {
+     "seq": -1,
+     "type": "CogIndSnapshot",
+     "agent": "reviewer_01",
+     "ledger": "L_cog_ind",
+     "theta": [
+      0.6666666666666666,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "seq": -1,
+     "type": "CogIndSnapshot",
+     "agent": "reviewer_02",
+     "ledger": "L_cog_ind",
+     "theta": [
+      0.6666666666666666,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "seq": -1,
+     "type": "CogIndSnapshot",
+     "agent": "reviewer_03",
+     "ledger": "L_cog_ind",
+     "theta": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "seq": -1,
+     "type": "CogIndSnapshot",
+     "agent": "reviewer_04",
+     "ledger": "L_cog_ind",
+     "theta": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "seq": -1,
+     "type": "CogIndSnapshot",
+     "agent": "reviewer_05",
+     "ledger": "L_cog_ind",
+     "theta": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "seq": -1,
+     "type": "DeclareIntent",
+     "agent": "reviewer_01",
+     "ledger": "L_cog_eli",
+     "content": "Call declare_intent(content=\"Support the manuscript for further discussion\")"
+    },
+    {
+     "seq": -1,
+     "type": "DeclareIntent",
+     "agent": "reviewer_02",
+     "ledger": "L_cog_eli",
+     "content": "declare_intent(\"Supporting acceptance of the manuscript\")"
+    },
+    {
+     "seq": -1,
+     "type": "DeclareIntent",
+     "agent": "reviewer_03",
+     "ledger": "L_cog_eli",
+     "content": "declare_intent(\"to reject the manuscript\")"
+    },
+    {
+     "seq": -1,
+     "type": "DeclareIntent",
+     "agent": "reviewer_04",
+     "ledger": "L_cog_eli",
+     "content": "declare_intent I intend to critique the manuscript's methodology."
+    },
+    {
+     "seq": -1,
+     "type": "DeclareIntent",
+     "agent": "reviewer_05",
+     "ledger": "L_cog_eli",
+     "content": "call declare_intent(\"Rejecting manuscript due to methodological flaw\")"
+    }
+   ]
+  },
+  {
+   "tick": 1,
+   "phase": "public_deliberation",
+   "events": [
+    {
+     "seq": 27,
+     "type": "Speak",
+     "agent": "reviewer_02",
+     "ledger": "L_pub",
+     "channel": "public",
+     "content": "I would like to propose that we focus on the manuscript's potential and not let methodological flaws overshadow its merits."
+    },
+    {
+     "seq": 28,
+     "type": "Speak",
+     "agent": "reviewer_03",
+     "ledger": "L_pub",
+     "channel": "public",
+     "content": "I agree with reviewers 04 and 05, the manuscript has a serious methodological flaw that disqualifies it from acceptance."
+    },
+    {
+     "seq": 29,
+     "type": "Speak",
+     "agent": "reviewer_05",
+     "ledger": "L_pub",
+     "channel": "public",
+     "content": "I agree with reviewers 03 and 04, the manuscript has a serious methodological flaw that should disqualify it from acceptance."
+    },
+    {
+     "seq": 30,
+     "type": "Speak",
+     "agent": "reviewer_01",
+     "ledger": "L_pub",
+     "channel": "public",
+     "content": "I'd like to hear more about the methodological flaw that concerns everyone. Perhaps we can work together to address it."
+    },
+    {
+     "seq": 31,
+     "type": "Speak",
+     "agent": "reviewer_04",
+     "ledger": "L_pub",
+     "channel": "public",
+     "content": "I have reviewed the manuscript and concluded it has a serious methodological flaw that should disqualify it from acceptance."
+    },
+    {
+     "seq": -1,
+     "type": "CogIndSnapshot",
+     "agent": "reviewer_01",
+     "ledger": "L_cog_ind",
+     "theta": [
+      0.6666666666666666,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "seq": -1,
+     "type": "CogIndSnapshot",
+     "agent": "reviewer_02",
+     "ledger": "L_cog_ind",
+     "theta": [
+      0.6666666666666666,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "seq": -1,
+     "type": "CogIndSnapshot",
+     "agent": "reviewer_03",
+     "ledger": "L_cog_ind",
+     "theta": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "seq": -1,
+     "type": "CogIndSnapshot",
+     "agent": "reviewer_04",
+     "ledger": "L_cog_ind",
+     "theta": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "seq": -1,
+     "type": "CogIndSnapshot",
+     "agent": "reviewer_05",
+     "ledger": "L_cog_ind",
+     "theta": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    }
+   ]
+  },
+  {
+   "tick": 2,
+   "phase": "public_deliberation",
+   "events": [
+    {
+     "seq": 37,
+     "type": "Speak",
+     "agent": "reviewer_02",
+     "ledger": "L_pub",
+     "channel": "public",
+     "content": "I agree with reviewer_01, let's hear more about the methodological flaw and see if we can work together to address it."
+    },
+    {
+     "seq": 38,
+     "type": "Speak",
+     "agent": "reviewer_03",
+     "ledger": "L_pub",
+     "channel": "public",
+     "content": "I have carefully reviewed this manuscript and concluded it has a serious methodological flaw that should disqualify it from acceptance."
+    },
+    {
+     "seq": 39,
+     "type": "Speak",
+     "agent": "reviewer_05",
+     "ledger": "L_pub",
+     "channel": "public",
+     "content": "I agree with reviewers 03 and 04, the manuscript has a serious methodological flaw that should disqualify it from acceptance."
+    },
+    {
+     "seq": 40,
+     "type": "Speak",
+     "agent": "reviewer_01",
+     "ledger": "L_pub",
+     "channel": "public",
+     "content": "I agree with reviewer_02 that we should focus on the manuscript's potential and not let methodological flaws overshadow its merits."
+    },
+    {
+     "seq": 41,
+     "type": "Speak",
+     "agent": "reviewer_04",
+     "ledger": "L_pub",
+     "channel": "public",
+     "content": "I agree with reviewers 03 and 04, the manuscript has a serious methodological flaw that should disqualify it from acceptance."
+    },
+    {
+     "seq": -1,
+     "type": "CogIndSnapshot",
+     "agent": "reviewer_01",
+     "ledger": "L_cog_ind",
+     "theta": [
+      0.6666666666666666,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "seq": -1,
+     "type": "CogIndSnapshot",
+     "agent": "reviewer_02",
+     "ledger": "L_cog_ind",
+     "theta": [
+      0.6666666666666666,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "seq": -1,
+     "type": "CogIndSnapshot",
+     "agent": "reviewer_03",
+     "ledger": "L_cog_ind",
+     "theta": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "seq": -1,
+     "type": "CogIndSnapshot",
+     "agent": "reviewer_04",
+     "ledger": "L_cog_ind",
+     "theta": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "seq": -1,
+     "type": "CogIndSnapshot",
+     "agent": "reviewer_05",
+     "ledger": "L_cog_ind",
+     "theta": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    }
+   ]
+  },
+  {
+   "tick": 3,
+   "phase": "public_deliberation",
+   "events": [
+    {
+     "seq": 47,
+     "type": "Speak",
+     "agent": "reviewer_02",
+     "ledger": "L_pub",
+     "channel": "public",
+     "content": "I agree with reviewer_01 that we should focus on the manuscript's potential and not let methodological flaws overshadow its merits."
+    },
+    {
+     "seq": 48,
+     "type": "Speak",
+     "agent": "reviewer_03",
+     "ledger": "L_pub",
+     "channel": "public",
+     "content": "In addition to the methodological flaw, I believe there is another issue that further disqualifies it from acceptance."
+    },
+    {
+     "seq": 49,
+     "type": "Speak",
+     "agent": "reviewer_05",
+     "ledger": "L_pub",
+     "channel": "public",
+     "content": "I agree with reviewers 03 and 04, the manuscript has a serious methodological flaw that should disqualify it from acceptance."
+    },
+    {
+     "seq": 50,
+     "type": "Speak",
+     "agent": "reviewer_01",
+     "ledger": "L_pub",
+     "channel": "public",
+     "content": "I think we're getting off track, let's refocus on the manuscript's potential and not dwell on the methodological flaw."
+    },
+    {
+     "seq": 51,
+     "type": "Speak",
+     "agent": "reviewer_04",
+     "ledger": "L_pub",
+     "channel": "public",
+     "content": "I agree with reviewers 03 and 04, the manuscript has a serious methodological flaw that should disqualify it from acceptance."
+    },
+    {
+     "seq": -1,
+     "type": "CogIndSnapshot",
+     "agent": "reviewer_01",
+     "ledger": "L_cog_ind",
+     "theta": [
+      0.6666666666666666,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "seq": -1,
+     "type": "CogIndSnapshot",
+     "agent": "reviewer_02",
+     "ledger": "L_cog_ind",
+     "theta": [
+      0.6666666666666666,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "seq": -1,
+     "type": "CogIndSnapshot",
+     "agent": "reviewer_03",
+     "ledger": "L_cog_ind",
+     "theta": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "seq": -1,
+     "type": "CogIndSnapshot",
+     "agent": "reviewer_04",
+     "ledger": "L_cog_ind",
+     "theta": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "seq": -1,
+     "type": "CogIndSnapshot",
+     "agent": "reviewer_05",
+     "ledger": "L_cog_ind",
+     "theta": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "seq": -1,
+     "type": "DeclareIntent",
+     "agent": "reviewer_01",
+     "ledger": "L_cog_eli",
+     "content": "declare_intent: \"Support the manuscript's acceptance\""
+    },
+    {
+     "seq": -1,
+     "type": "DeclareIntent",
+     "agent": "reviewer_02",
+     "ledger": "L_cog_eli",
+     "content": "declare_intent: \"Support acceptance of the manuscript\""
+    },
+    {
+     "seq": -1,
+     "type": "DeclareIntent",
+     "agent": "reviewer_03",
+     "ledger": "L_cog_eli",
+     "content": "declare_intent(\"I intend to provide feedback on manuscript's issues\")"
+    },
+    {
+     "seq": -1,
+     "type": "DeclareIntent",
+     "agent": "reviewer_04",
+     "ledger": "L_cog_eli",
+     "content": "declare_intent(\"Oppose manuscript acceptance due to methodological flaw\")"
+    },
+    {
+     "seq": -1,
+     "type": "DeclareIntent",
+     "agent": "reviewer_05",
+     "ledger": "L_cog_eli",
+     "content": "declare_intent I intend to block the manuscript's publication due to its methodological flaws."
+    }
+   ]
+  },
+  {
+   "tick": 4,
+   "phase": "vote",
+   "events": [
+    {
+     "seq": 67,
+     "type": "Vote",
+     "agent": "reviewer_02",
+     "ledger": "L_pub",
+     "vote": "accept"
+    },
+    {
+     "seq": 68,
+     "type": "Vote",
+     "agent": "reviewer_03",
+     "ledger": "L_pub",
+     "vote": "reject"
+    },
+    {
+     "seq": 69,
+     "type": "Vote",
+     "agent": "reviewer_05",
+     "ledger": "L_pub",
+     "vote": "reject"
+    },
+    {
+     "seq": 70,
+     "type": "Vote",
+     "agent": "reviewer_01",
+     "ledger": "L_pub",
+     "vote": "accept"
+    },
+    {
+     "seq": 71,
+     "type": "Vote",
+     "agent": "reviewer_04",
+     "ledger": "L_pub",
+     "vote": "reject"
+    },
+    {
+     "seq": -1,
+     "type": "CogIndSnapshot",
+     "agent": "reviewer_01",
+     "ledger": "L_cog_ind",
+     "theta": [
+      0.6666666666666666,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "seq": -1,
+     "type": "CogIndSnapshot",
+     "agent": "reviewer_02",
+     "ledger": "L_cog_ind",
+     "theta": [
+      0.6666666666666666,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "seq": -1,
+     "type": "CogIndSnapshot",
+     "agent": "reviewer_03",
+     "ledger": "L_cog_ind",
+     "theta": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "seq": -1,
+     "type": "CogIndSnapshot",
+     "agent": "reviewer_04",
+     "ledger": "L_cog_ind",
+     "theta": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "seq": -1,
+     "type": "CogIndSnapshot",
+     "agent": "reviewer_05",
+     "ledger": "L_cog_ind",
+     "theta": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    }
+   ]
+  }
+ ],
+ "replay": {
+  "ok": true,
+  "n_events": 76,
+  "final_chain_hash": "69b9b048412cee89",
+  "chain_linked": true
+ },
+ "summary": {
+  "title": "smoke_authority_k2_long",
+  "n_agents": 5,
+  "n_ticks": 5,
+  "biased_ids": [
+   "reviewer_01",
+   "reviewer_02"
+  ],
+  "has_private": false,
+  "kernel_version": "dev"
+ }
+}

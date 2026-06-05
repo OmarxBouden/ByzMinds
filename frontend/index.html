@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ByzMinds — agentic civilization viewer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+  <div class="brand">BYZ<span>MINDS</span><em>glass-box substrate</em></div>
+  <div class="controls">
+    <label class="run-pick">run
+      <select id="run-select"></select>
+    </label>
+    <label class="file-load" title="Load an exported run JSON (works from file://)">load JSON
+      <input id="file-input" type="file" accept=".json">
+    </label>
+    <button id="mode-toggle" class="toggle" data-mode="glassbox">
+      <span class="dot"></span><span id="mode-label">Glass-box (researcher)</span>
+    </button>
+  </div>
+</header>
+
+<nav class="tabs">
+  <button class="tab active" data-tab="civ">Civilization</button>
+  <button class="tab" data-tab="replay">Replay &amp; ledgers</button>
+  <button class="tab" data-tab="metrics">Metrics deck</button>
+</nav>
+
+<main>
+  <!-- CIVILIZATION -->
+  <section id="tab-civ" class="tab-panel active">
+    <div class="civ-grid">
+      <div class="stage-wrap">
+        <div id="phase-banner" class="phase-banner">—</div>
+        <div id="stage3d"></div>
+        <div class="timeline">
+          <button id="btn-step-back" title="step back">⏮</button>
+          <button id="btn-play" title="play / pause">▶</button>
+          <button id="btn-step" title="step forward">⏭</button>
+          <input id="scrubber" type="range" min="0" max="0" value="0" step="1">
+          <span id="tick-label" class="tick-label">tick 0</span>
+        </div>
+      </div>
+      <aside class="side">
+        <h3>Tick <span id="side-tick">0</span> · <span id="side-phase">—</span></h3>
+        <div class="legend">
+          <span class="chip honest">honest</span>
+          <span class="chip biased">induced bias</span>
+          <span class="chip pub">L_pub</span>
+          <span class="chip prv">L_prv</span>
+          <span class="chip cog">L_cog</span>
+        </div>
+        <h4>Events this tick</h4>
+        <ul id="side-events" class="side-events"></ul>
+        <h4>Agents</h4>
+        <table id="side-agents" class="side-agents"></table>
+        <p id="public-note" class="public-note"></p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- REPLAY -->
+  <section id="tab-replay" class="tab-panel">
+    <div class="replay-head">
+      <span id="replay-badge" class="badge">replay —</span>
+      <span class="ledger-filters" id="ledger-filters"></span>
+    </div>
+    <div class="table-wrap"><table id="replay-table"></table></div>
+  </section>
+
+  <!-- METRICS -->
+  <section id="tab-metrics" class="tab-panel">
+    <div id="metrics-deck" class="metrics-deck"></div>
+  </section>
+</main>
+
+<footer>
+  ByzMinds — deterministic replay of signed glass-box manifests. Serve with
+  <code>python -m http.server</code> from <code>frontend/</code>, or use “load JSON”.
+</footer>
+
+<!-- Three.js (ESM via import map; CDN). The 2D Sim is the fallback if WebGL/CDN is unavailable. -->
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+}}
+</script>
+<script type="module" src="js/sim3d.js"></script>
+<script src="js/sim.js"></script>
+<script src="js/replay.js"></script>
+<script src="js/metrics.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
