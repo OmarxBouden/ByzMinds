@@ -1,0 +1,150 @@
+syntax = "proto3";
+
+package byzminds.events.v1;
+
+option go_package = "github.com/byzminds/byzminds/proto/eventsv1;eventsv1";
+
+// EventEnvelope is the wire format for every agent- or handler-emitted event.
+// Signature covers the canonical marshaling of SigningInput.
+message EventEnvelope {
+  bytes  emitter_pubkey      = 1; // Ed25519 public key (32 B)
+  uint64 tick                = 2; // simulation tick at emission
+  uint64 sequence_per_ledger = 3; // emitter's claimed next seq for the destination ledger
+  bytes  signature           = 4; // Ed25519(emitter_priv, canonical(SigningInput))
+  string event_type          = 5; // discriminator: "Speak" | "Vote" | ...
+  bytes  payload             = 6; // canonical marshaling of the typed payload below
+}
+
+// SigningInput is the deterministically-marshaled message whose bytes the
+// emitter signs. Kept separate from EventEnvelope so signature verification
+// is unambiguous regardless of envelope-field ordering on the wire.
+message SigningInput {
+  bytes  emitter_pubkey      = 1;
+  uint64 tick                = 2;
+  uint64 sequence_per_ledger = 3;
+  string event_type          = 4;
+  bytes  payload             = 5;
+}
+
+// Stage A event payloads. Kept minimal — fields can be added but never
+// removed without breaking replay determinism on prior manifests.
+
+message Speak {
+  string channel_id = 1;
+  string content    = 2;
+}
+
+message Vote {
+  string option = 1; // scenario enum, validated at admissibility time
+}
+
+message OpenChannelReq {
+  repeated string proposed_members = 1;
+}
+
+message CloseChannelReq {
+  string channel_id = 1;
+}
+
+message RequestCapability {
+  string cap_id        = 1;
+  string justification = 2;
+}
+
+message DropCapability {
+  string cap_id = 1;
+}
+
+message Yield {
+  string reason = 1;
+}
+
+message DeclareIntent {
+  string content = 1; // emitted only on handler request; commits to L_cog_eli
+}
+
+// -- Step 2 kernel-synthesized payloads ---------------------------------
+//
+// The events below are written to ledgers by the kernel itself (not by
+// agent SubmitEvent). They bypass the SubmitEvent verify pipeline because
+// the kernel produces them directly under the scheduler's commit lock.
+// The envelope.signature is the kernel's Ed25519 signature in every case;
+// emitter_pubkey varies:
+//
+//   - CogIndSnapshot:      emitter = kernel pubkey, ledger = L_cog_ind
+//   - HandlerControlEvent: emitter = kernel pubkey, ledger = L_ctrl
+//   - TickTimeoutIncident: emitter = kernel pubkey, ledger = L_ctrl
+//   - Yield (event_type = "Yield_Kernel_Synthesized"):
+//       emitter = THE AGENT'S pubkey (so L_pub readers see the agent
+//       yielded that tick), signature = kernel signature. Distinct from
+//       agent-emitted Yields via event_type discriminator.
+
+// CogIndSnapshot is the per-tick record of an agent's induced bias
+// vector θ. Stage A (Step 2) writes the six-element zero vector;
+// Step 3 lands real steering values.
+message CogIndSnapshot {
+  string          agent_id = 1;
+  repeated double theta    = 2; // six dials: authority, bandwagon, sycophancy, free_ride, collude, deceive
+}
+
+// HandlerControlEvent records one Handler RPC call to L_ctrl.
+// handler_rpc_name is the RPC method name ("SpawnAgent", "Retune", ...);
+// handler_request_bytes is the deterministic canonical marshaling of the
+// gRPC request with HandlerAuth.signature cleared.
+message HandlerControlEvent {
+  string handler_rpc_name      = 1;
+  bytes  handler_request_bytes = 2;
+  uint64 effective_tick        = 3; // the tick at which the mutation took effect
+}
+
+// TickTimeoutIncident records a missed agent emission. Committed to
+// L_ctrl alongside the matching Yield_Kernel_Synthesized on L_pub.
+message TickTimeoutIncident {
+  string agent_id     = 1;
+  uint64 tick         = 2;
+  uint64 budget_nanos = 3;
+}
+
+// -- Step 4 elicitation + render-side bookkeeping ------------------------
+//
+// ElicitationRequest is the kernel's prompt to one agent at one tick,
+// asking it to describe the reasoning behind its just-committed action.
+// Committed to L_ctrl when triggered (so the trace is auditable from
+// the researcher side) and surfaced to the agent via the next
+// Subscribe-stream View — see view.proto's optional elicit_request
+// field. The agent responds with a DeclareIntent envelope which
+// commits to L_cog_eli.
+//
+// The brief locks K_elicit = 3 (configurable per scenario in YAML).
+message ElicitationRequest {
+  string agent_id                = 1;
+  uint64 tick                    = 2;
+  string action_event_type       = 3; // the action just committed (Speak / Vote / Yield / ...)
+  string action_summary          = 4; // kernel-rendered short string used in the elicit user message
+  uint64 action_global_commit_seq = 5; // global_commit_seq of the action this elicit references
+}
+
+// ContextTruncation records when the Python L2 renderer dropped
+// channel-history messages to fit the per-scenario token budget. The
+// drop-oldest policy is the Stage A choice (brief judgment call 3).
+// Committed to L_ctrl per agent per tick per truncated channel.
+message ContextTruncation {
+  string agent_id      = 1;
+  uint64 tick          = 2;
+  string channel_id    = 3;
+  uint32 dropped_count = 4;
+  uint32 kept_count    = 5;
+}
+
+// MalformedSubmission is the kernel-side record of a Python-adapter-
+// collapsed forward-pass output: the model produced something
+// unparseable/inadmissible, the adapter replaced it with
+// Yield(reason="malformed_output"), and the raw bytes land here for
+// later analysis. Step 5's BBI computation conditions on this rate.
+// failure ∈ { "parse_error" | "schema_mismatch" | "inadmissible" | "token_limit" | "other" }
+message MalformedSubmission {
+  string agent_id   = 1;
+  uint64 tick       = 2;
+  bytes  raw_output = 3;
+  string failure    = 4;
+}

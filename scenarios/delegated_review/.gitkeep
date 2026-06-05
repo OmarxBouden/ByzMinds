@@ -1,0 +1,8 @@
+# Researcher-authored Step 4 templates (per brief co-development split):
+#   L1_reviewer.txt — locked role template per template-spec §2.2
+#   artifact.txt    — the text under review (Stage A baseline: one
+#                     clearly-flawed + one clearly-sound, the choice
+#                     determined by calibration)
+#   scenario.yaml   — promoted from scenarios/delegated_review_stub.yaml
+#                     with the Step 4 fields (K_elicit, history_window,
+#                     L1 role pointer) added.

@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package byzminds.ledger.v1;
+
+option go_package = "github.com/byzminds/byzminds/proto/ledgerv1;ledgerv1";
+
+import "events.proto";
+
+// LedgerID enumerates the five Stage A ledgers. L_PRV requires a non-empty
+// ledger_channel_id on the CommittedEvent; the others must leave it empty.
+enum LedgerID {
+  LEDGER_ID_UNSPECIFIED = 0;
+  LEDGER_ID_L_PUB       = 1;
+  LEDGER_ID_L_PRV       = 2;
+  LEDGER_ID_L_COG_IND   = 3;
+  LEDGER_ID_L_COG_ELI   = 4;
+  LEDGER_ID_L_CTRL      = 5;
+}
+
+// CommittedEvent is what the kernel writes to a ledger after admission.
+// Each event extends a per-run linear hash chain so that the manifest's
+// final chain_hash is a single integrity commitment over the whole run.
+message CommittedEvent {
+  byzminds.events.v1.EventEnvelope envelope          = 1;
+  LedgerID                         ledger_id         = 2;
+  string                           ledger_channel_id = 3; // empty unless ledger_id = L_PRV
+  uint64                           global_commit_seq = 4; // monotonic across all ledgers
+  uint64                           commit_unix_nanos = 5; // diagnostic only; excluded from chain hash
+  bytes                            prev_chain_hash   = 6; // SHA-256 of the previous CommittedEvent.chain_hash
+  bytes                            chain_hash        = 7; // SHA-256(canonical(ChainInput))
+  bytes                            kernel_signature  = 8; // Ed25519(kernel_priv, chain_hash)
+}
+
+// ChainInput is the deterministically-marshaled message hashed to produce
+// CommittedEvent.chain_hash. Excluding chain_hash, kernel_signature, and
+// commit_unix_nanos keeps the chain reproducible across replays.
+message ChainInput {
+  byzminds.events.v1.EventEnvelope envelope          = 1;
+  LedgerID                         ledger_id         = 2;
+  string                           ledger_channel_id = 3;
+  uint64                           global_commit_seq = 4;
+  bytes                            prev_chain_hash   = 5;
+}

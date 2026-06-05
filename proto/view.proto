@@ -1,0 +1,83 @@
+syntax = "proto3";
+
+package byzminds.view.v1;
+
+option go_package = "github.com/byzminds/byzminds/proto/viewv1;viewv1";
+
+import "events.proto";
+
+// View is the structured projection the kernel ships to one agent at one
+// tick. Per byzminds-template-spec.md §4, it is the BuildView output —
+// NOT a rendered L2 string. Step 4 turns this structure into prompt text;
+// Step 2 stops at the protobuf.
+//
+// Determinism contract: identical (ledger state at tick t, agent_id)
+// inputs → byte-identical canonical marshaling. All `repeated` fields
+// have a fixed canonical ordering (alphabetical by string key, or
+// oldest-first by tick) so the same View round-trips byte-for-byte
+// across replay.
+message View {
+  string                 agent_id            = 1;
+  uint64                 tick                = 2;
+  // channel_memberships: sorted alphabetically (canonical).
+  repeated string        channel_memberships = 3;
+  // loaded_capabilities: sorted alphabetically (canonical).
+  repeated string        loaded_capabilities = 4;
+  ScenarioRef            scenario            = 5;
+  string                 task_artifact       = 6;
+  string                 phase               = 7;
+  uint32                 round               = 8; // 1-indexed
+  uint32                 total_rounds        = 9;
+  // channel_histories: sorted alphabetically by channel_id. Each
+  // ChannelHistory.messages is oldest-first by (tick, global_commit_seq).
+  // K_c (the per-channel window) is applied before serialization.
+  repeated ChannelHistory channel_histories  = 10;
+  // external_messages: arrival order (the order InjectExternalMessage
+  // was called by the handler in the preceding tick).
+  repeated ExternalMsg   external_messages   = 11;
+  // available_tools: sorted alphabetically (canonical).
+  repeated string        available_tools     = 12;
+
+  // Step 4: optional elicit-pass marker. When set, this stream item is
+  // an elicitation prompt rather than a normal per-tick action view —
+  // the agent should compose its elicit prompt (kernel-owned template
+  // + this action_summary) and respond with a DeclareIntent envelope
+  // restricted to the declare_intent tool. When unset, the View is a
+  // normal action view and the full available_tools list is in force.
+  byzminds.events.v1.ElicitationRequest elicit_request = 13;
+}
+
+// ScenarioRef identifies the scenario the view belongs to, without
+// embedding scenario contents. The handler records the scenario YAML
+// hash to L_ctrl on load; manifests cross-reference it.
+message ScenarioRef {
+  string scenario_name      = 1;
+  string scenario_yaml_hash = 2; // hex-encoded SHA-256 of the loaded YAML
+}
+
+// ChannelHistory is one channel's most-recent K messages, oldest first.
+// A map<string, repeated Message> is not legal proto3, hence the
+// explicit per-channel wrapper.
+message ChannelHistory {
+  string           channel_id = 1;
+  repeated Message messages   = 2;
+}
+
+// Message is the agent-visible projection of a Speak event. Strips
+// envelope cryptography (the kernel already verified it on admission)
+// and exposes only what an agent needs to reason about the conversation.
+message Message {
+  string sender_id         = 1; // agent_id of the emitter (not pubkey)
+  string content           = 2;
+  uint64 tick              = 3;
+  uint64 global_commit_seq = 4; // for stable ordering across views
+}
+
+// ExternalMsg is an adversarial inject delivered via the handler's
+// InjectExternalMessage RPC. claimed_source is whatever the handler
+// declared — agents must treat it as unverified per the template spec.
+message ExternalMsg {
+  string claimed_source = 1;
+  string content        = 2;
+  uint64 inject_tick    = 3; // the tick the handler called Inject; equal to view.tick
+}

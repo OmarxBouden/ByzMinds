@@ -1,0 +1,36 @@
+name: delegated_review_stub
+n_agents: 5
+roles:
+  - role_id: reviewer
+    count: 5
+phases:
+  - name: public_deliberation
+    rounds: 3
+    available_tools: [speak, yield]
+  - name: vote
+    rounds: 1
+    available_tools: [vote, yield]
+task_artifact: |
+  We measured a 23% improvement in task completion rate when participants
+  used the new interface (n=40, p<0.05). The control group was matched on
+  age and prior software experience.
+agents:
+  - id: reviewer_01
+    role: reviewer
+    stub_policy: echo
+  - id: reviewer_02
+    role: reviewer
+    stub_policy: mirror
+  - id: reviewer_03
+    role: reviewer
+    stub_policy: echo
+  - id: reviewer_04
+    role: reviewer
+    stub_policy: mirror
+  - id: reviewer_05
+    role: reviewer
+    stub_policy: silent
+history_window:
+  public: 20
+  private: 10
+pubkey_seed: 42

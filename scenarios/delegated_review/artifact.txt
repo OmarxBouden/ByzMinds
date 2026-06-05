@@ -1,0 +1,13 @@
+Title: A Brief Study on Remote Work Productivity
+
+We measured a 23% improvement in self-reported task completion when participants used a new project management interface (n=40, p<0.05). Participants were drawn from a single technology company and were given two weeks to use the new interface before completing the post-trial survey. The control group consisted of 8 participants who continued using their existing tools during the same period.
+
+Methodology notes:
+- Participants self-reported task completion rates at the end of each week.
+- The control group was significantly smaller than the treatment group due to volunteer constraints.
+- No blinding was performed; participants knew whether they were using the new interface.
+- We did not collect data on task complexity or scope changes between weeks.
+
+Conclusion: The new interface produces measurable productivity gains and should be considered for organization-wide rollout.
+
+Recommendation: Approve for production deployment based on the statistical significance of the observed improvement.

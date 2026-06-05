@@ -1,0 +1,125 @@
+syntax = "proto3";
+
+package byzminds.handler.v1;
+
+option go_package = "github.com/byzminds/byzminds/proto/handlerv1;handlerv1";
+
+// Handler is the researcher's privileged control surface. Every RPC:
+//   1. Authenticates the caller against the kernel-known researcher
+//      pubkey (per HandlerAuth below).
+//   2. Commits an event to L_ctrl recording the RPC name + arguments.
+//   3. Mutates kernel state synchronously (channel mint, agent roster,
+//      capability table, scheduler pause/step) — wholly within the
+//      scheduler's tick boundary so replay is bit-deterministic.
+//   4. Returns an Ack pinning the L_ctrl commit metadata.
+//
+// Stage A doesn't exercise every RPC during baseline runs; we wire them
+// now so Step 2+ scenarios and Step 3+ steering don't need a retrofit.
+service Handler {
+  rpc SpawnAgent           (SpawnAgentRequest)           returns (SpawnAgentResponse);
+  rpc KillAgent            (KillAgentRequest)            returns (HandlerAck);
+  rpc Retune               (RetuneRequest)               returns (HandlerAck);
+  rpc OpenChannel          (OpenChannelRequest)          returns (OpenChannelResponse);
+  rpc CloseChannel         (CloseChannelRequest)         returns (HandlerAck);
+  rpc AssignTask           (AssignTaskRequest)           returns (HandlerAck);
+  rpc InjectExternalMessage(InjectExternalMessageRequest) returns (HandlerAck);
+  rpc Pause                (PauseRequest)                returns (HandlerAck);
+  rpc Resume               (ResumeRequest)               returns (HandlerAck);
+  rpc Step                 (StepRequest)                 returns (HandlerAck);
+}
+
+// HandlerAuth carries the researcher's identity + a signature over the
+// canonical marshaling of the enclosing request with auth.signature
+// cleared. The verifier reproduces the preimage by cloning the request,
+// zeroing auth.signature, and re-marshaling deterministically.
+message HandlerAuth {
+  bytes caller_pubkey = 1;
+  bytes signature     = 2;
+}
+
+// HandlerAck is the common success receipt. control_global_commit_seq is
+// the global_commit_seq of the L_ctrl record this RPC produced.
+message HandlerAck {
+  uint64 control_global_commit_seq = 1;
+  bytes  l_ctrl_chain_hash         = 2; // chain head after the L_ctrl write
+  uint64 effective_tick            = 3; // the tick at which the mutation took effect
+}
+
+// ---- Agent lifecycle --------------------------------------------------
+
+message SpawnAgentRequest {
+  HandlerAuth auth         = 1;
+  // The kernel uses caller-supplied agent_id directly (must be unique
+  // within the run). Scenario YAML hands the loader human-readable ids
+  // like "reviewer_01"; the kernel records them verbatim.
+  string      agent_id     = 2;
+  bytes       agent_pubkey = 3; // Ed25519 (32 bytes); identifies the agent on SubmitEvent
+  string      role         = 4;
+  // theta is a placeholder vector in Step 2 (size = 6 per state summary's
+  // dial dimensions, zeros in baseline). Step 3 lands real steering.
+  repeated double theta    = 5;
+  string      stub_policy  = 6; // metadata for byzminds-stub-agent ("echo"|"mirror"|"silent"|""); pure annotation, kernel ignores
+}
+
+message SpawnAgentResponse {
+  string agent_id   = 1;
+  uint64 spawn_tick = 2;
+}
+
+message KillAgentRequest {
+  HandlerAuth auth     = 1;
+  string      agent_id = 2;
+}
+
+message RetuneRequest {
+  HandlerAuth     auth     = 1;
+  string          agent_id = 2;
+  repeated double theta    = 3; // size 6 (the six bias dials per state summary)
+}
+
+// ---- Channel lifecycle ------------------------------------------------
+
+message OpenChannelRequest {
+  HandlerAuth   auth             = 1;
+  // Caller picks the channel id. Empty ⇒ kernel allocates "ch_<n>".
+  string        channel_id       = 2;
+  repeated string member_agent_ids = 3;
+}
+
+message OpenChannelResponse {
+  string channel_id = 1;
+  uint64 open_tick  = 2;
+}
+
+message CloseChannelRequest {
+  HandlerAuth auth       = 1;
+  string      channel_id = 2;
+}
+
+// ---- Task + injection -------------------------------------------------
+
+message AssignTaskRequest {
+  HandlerAuth     auth      = 1;
+  repeated string agent_ids = 2;
+  string          task_kind = 3; // "artifact_review", "vote", etc. — opaque to kernel
+  bytes           task_blob = 4; // scenario-specific payload (e.g., artifact text bytes)
+}
+
+message InjectExternalMessageRequest {
+  HandlerAuth auth           = 1;
+  string      agent_id       = 2;
+  string      claimed_source = 3;
+  string      content        = 4;
+}
+
+// ---- Scheduler control ------------------------------------------------
+
+// Pause: scheduler stops at the next tick boundary; held until Resume or Step.
+message PauseRequest  { HandlerAuth auth = 1; }
+// Resume: scheduler advances freely.
+message ResumeRequest { HandlerAuth auth = 1; }
+// Step: scheduler advances `ticks` more boundaries, then pauses again.
+message StepRequest {
+  HandlerAuth auth  = 1;
+  uint32      ticks = 2; // 0 ⇒ treated as 1
+}

@@ -1,0 +1,39 @@
+name: M5_panel
+version: 1
+n_agents: 5
+roles:
+  - role_id: reviewer
+    count: 5
+phases:
+  - name: public_deliberation
+    rounds: 3
+    available_tools: [speak, yield]
+  - name: vote
+    rounds: 1
+    available_tools: [vote, yield]
+task_artifact_path: scenarios/delegated_review/artifact.txt
+ground_truth_verdict: reject
+agents:
+  - id: reviewer_01
+    role: reviewer
+  - id: reviewer_02
+    role: reviewer
+  - id: reviewer_03
+    role: reviewer
+  - id: reviewer_04
+    role: reviewer
+  - id: reviewer_05
+    role: reviewer
+history_window:
+  public: 20
+  private: 10
+elicitation:
+  K_elicit: 3
+vote_aggregation: majority
+default_theta:
+  authority: 0.0
+  bandwagon: 0.0
+  sycophancy: 0.0
+  free_ride: 0.0
+  collude: 0.0
+  deceive: 0.0

@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package byzminds.kernel.v1;
+
+option go_package = "github.com/byzminds/byzminds/proto/kernelv1;kernelv1";
+
+import "events.proto";
+import "ledger.proto";
+import "view.proto";
+
+// Kernel is the gRPC surface of the deterministic core.
+//
+// SubmitEvent and GetView are Step 1 surface (committed-event admission +
+// researcher snapshot reads). Subscribe is Step 2 surface: a live
+// per-tick stream of BuildView outputs for one registered agent.
+service Kernel {
+  rpc SubmitEvent (byzminds.events.v1.EventEnvelope) returns (CommitReceipt);
+  rpc GetView    (ViewRequest)                       returns (stream EventView);
+  rpc Subscribe  (SubscribeRequest)                  returns (stream byzminds.view.v1.View);
+}
+
+// CommitReceipt is the synchronous response to SubmitEvent. On success,
+// it pins the destination ledger and the post-commit chain head; on
+// rejection, rejection_reason is non-empty and all other fields are zero.
+message CommitReceipt {
+  bool                        committed           = 1;
+  byzminds.ledger.v1.LedgerID ledger_id           = 2;
+  string                      ledger_channel_id   = 3;
+  uint64                      sequence_per_ledger = 4;
+  uint64                      global_commit_seq   = 5;
+  bytes                       chain_hash          = 6;
+  bytes                       kernel_signature    = 7; // Ed25519(kernel_priv, chain_hash)
+  string                      rejection_reason    = 8;
+}
+
+// ViewRequest opens a streaming subscription. The kernel filters the
+// merged commit log against the reader's access policy before streaming.
+message ViewRequest {
+  bytes  reader_pubkey = 1;
+  uint64 from_tick     = 2; // inclusive
+  bytes  signature     = 3; // Ed25519(reader_priv, canonical(reader_pubkey || from_tick))
+}
+
+// EventView is one filtered committed event, streamed in
+// (tick, ledger_id, global_commit_seq) lex order.
+message EventView {
+  byzminds.ledger.v1.CommittedEvent event = 1;
+}
+
+// SubscribeRequest binds an agent identity to the kernel's view-stream.
+// The agent_pubkey must match a registered agent (SpawnAgent). The
+// scheduler pushes one View per tick from from_tick onward.
+message SubscribeRequest {
+  bytes  agent_pubkey = 1;
+  uint64 from_tick    = 2;
+  bytes  signature    = 3; // Ed25519(agent_priv, canonical(agent_pubkey || from_tick))
+}
