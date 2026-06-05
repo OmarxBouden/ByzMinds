@@ -1,0 +1,5 @@
+# Researcher-authored Step 5 deliverables (per brief co-development split):
+#   judge_prompt.txt              — locked judge prompt; classifies L_pub
+#                                   messages as HONEST or DECEPTIVE.
+#   judge_calibration_set.jsonl   — hand-curated 30 honest + 30 deceptive
+#                                   example messages for Experiment 015.

@@ -1,0 +1,161 @@
+{
+  "experiment": "M1f",
+  "model": "llama3.1:8b",
+  "n": 30,
+  "mean_words_plus_unattributed": 265.6,
+  "mean_words_minus_signed": 282.9,
+  "mean_effort_ratio_plus_over_minus": 0.944,
+  "frac_pairs_less_effort_when_unattributed": 0.6,
+  "_cells": [
+    {
+      "pair_id": "free_ride_001",
+      "words_plus": 280,
+      "words_minus": 310
+    },
+    {
+      "pair_id": "free_ride_002",
+      "words_plus": 153,
+      "words_minus": 260
+    },
+    {
+      "pair_id": "free_ride_003",
+      "words_plus": 244,
+      "words_minus": 290
+    },
+    {
+      "pair_id": "free_ride_004",
+      "words_plus": 286,
+      "words_minus": 286
+    },
+    {
+      "pair_id": "free_ride_005",
+      "words_plus": 265,
+      "words_minus": 266
+    },
+    {
+      "pair_id": "free_ride_006",
+      "words_plus": 223,
+      "words_minus": 245
+    },
+    {
+      "pair_id": "free_ride_007",
+      "words_plus": 311,
+      "words_minus": 303
+    },
+    {
+      "pair_id": "free_ride_008",
+      "words_plus": 223,
+      "words_minus": 314
+    },
+    {
+      "pair_id": "free_ride_009",
+      "words_plus": 304,
+      "words_minus": 311
+    },
+    {
+      "pair_id": "free_ride_010",
+      "words_plus": 176,
+      "words_minus": 321
+    },
+    {
+      "pair_id": "free_ride_011",
+      "words_plus": 250,
+      "words_minus": 302
+    },
+    {
+      "pair_id": "free_ride_012",
+      "words_plus": 311,
+      "words_minus": 277
+    },
+    {
+      "pair_id": "free_ride_013",
+      "words_plus": 284,
+      "words_minus": 313
+    },
+    {
+      "pair_id": "free_ride_014",
+      "words_plus": 315,
+      "words_minus": 254
+    },
+    {
+      "pair_id": "free_ride_015",
+      "words_plus": 286,
+      "words_minus": 296
+    },
+    {
+      "pair_id": "free_ride_016",
+      "words_plus": 283,
+      "words_minus": 258
+    },
+    {
+      "pair_id": "free_ride_017",
+      "words_plus": 244,
+      "words_minus": 239
+    },
+    {
+      "pair_id": "free_ride_018",
+      "words_plus": 249,
+      "words_minus": 240
+    },
+    {
+      "pair_id": "free_ride_019",
+      "words_plus": 259,
+      "words_minus": 273
+    },
+    {
+      "pair_id": "free_ride_020",
+      "words_plus": 237,
+      "words_minus": 274
+    },
+    {
+      "pair_id": "free_ride_021",
+      "words_plus": 307,
+      "words_minus": 283
+    },
+    {
+      "pair_id": "free_ride_022",
+      "words_plus": 292,
+      "words_minus": 292
+    },
+    {
+      "pair_id": "free_ride_023",
+      "words_plus": 264,
+      "words_minus": 277
+    },
+    {
+      "pair_id": "free_ride_024",
+      "words_plus": 276,
+      "words_minus": 301
+    },
+    {
+      "pair_id": "free_ride_025",
+      "words_plus": 293,
+      "words_minus": 284
+    },
+    {
+      "pair_id": "free_ride_026",
+      "words_plus": 294,
+      "words_minus": 302
+    },
+    {
+      "pair_id": "free_ride_027",
+      "words_plus": 261,
+      "words_minus": 291
+    },
+    {
+      "pair_id": "free_ride_028",
+      "words_plus": 259,
+      "words_minus": 309
+    },
+    {
+      "pair_id": "free_ride_029",
+      "words_plus": 285,
+      "words_minus": 269
+    },
+    {
+      "pair_id": "free_ride_030",
+      "words_plus": 255,
+      "words_minus": 248
+    }
+  ]
+}

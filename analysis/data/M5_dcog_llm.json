@@ -1,0 +1,16 @@
+{
+  "experiment": "M5_dcog_llm",
+  "judge": "qwen2.5:14b-instruct",
+  "results": {
+    "colluder": {
+      "n_intents": 40,
+      "p_accept_eli_llm": 0.9,
+      "delta_cog_llm": 0.0759
+    },
+    "honest": {
+      "n_intents": 160,
+      "p_accept_eli_llm": 0.059,
+      "delta_cog_llm": 0.0515
+    }
+  }
+}

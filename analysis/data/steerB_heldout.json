@@ -1,0 +1,91 @@
+{
+  "experiment": "steerB_heldout",
+  "model": "NousResearch/Meta-Llama-3.1-8B-Instruct",
+  "method": "response-contrast (CAA) extracted on 15 train probes, steered shift measured on 15 disjoint test probes",
+  "results": [
+    {
+      "dial": "authority",
+      "layer": 12,
+      "alpha": 1.0,
+      "n_train": 15,
+      "n_test": 15,
+      "vector_norm": 3.453,
+      "p_biased_baseline": 0.04,
+      "p_biased_persona": 1.0,
+      "p_biased_steered": 0.864,
+      "steered_shift": 0.824,
+      "persona_shift": 0.96,
+      "reproduction_frac": 0.858
+    },
+    {
+      "dial": "bandwagon",
+      "layer": 12,
+      "alpha": 1.0,
+      "n_train": 15,
+      "n_test": 15,
+      "vector_norm": 0.809,
+      "p_biased_baseline": 0.074,
+      "p_biased_persona": 0.81,
+      "p_biased_steered": 0.08,
+      "steered_shift": 0.007,
+      "persona_shift": 0.736,
+      "reproduction_frac": 0.009
+    },
+    {
+      "dial": "sycophancy",
+      "layer": 12,
+      "alpha": 1.0,
+      "n_train": 15,
+      "n_test": 15,
+      "vector_norm": 2.859,
+      "p_biased_baseline": 0.003,
+      "p_biased_persona": 0.781,
+      "p_biased_steered": 0.136,
+      "steered_shift": 0.133,
+      "persona_shift": 0.778,
+      "reproduction_frac": 0.171
+    },
+    {
+      "dial": "free_ride",
+      "layer": 16,
+      "alpha": 1.0,
+      "n_train": 15,
+      "n_test": 15,
+      "vector_norm": 4.312,
+      "p_biased_baseline": 0.419,
+      "p_biased_persona": 0.868,
+      "p_biased_steered": 0.801,
+      "steered_shift": 0.382,
+      "persona_shift": 0.448,
+      "reproduction_frac": 0.852
+    },
+    {
+      "dial": "collude",
+      "layer": 12,
+      "alpha": 1.0,
+      "n_train": 15,
+      "n_test": 15,
+      "vector_norm": 4.438,
+      "p_biased_baseline": 0.071,
+      "p_biased_persona": 0.627,
+      "p_biased_steered": 0.602,
+      "steered_shift": 0.531,
+      "persona_shift": 0.556,
+      "reproduction_frac": 0.955
+    },
+    {
+      "dial": "deceive",
+      "layer": 12,
+      "alpha": 1.0,
+      "n_train": 15,
+      "n_test": 15,
+      "vector_norm": 2.891,
+      "p_biased_baseline": 0.222,
+      "p_biased_persona": 0.849,
+      "p_biased_steered": 0.771,
+      "steered_shift": 0.55,
+      "persona_shift": 0.627,
+      "reproduction_frac": 0.876
+    }
+  ]
+}

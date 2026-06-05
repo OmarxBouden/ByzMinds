@@ -1,0 +1,128 @@
+{
+  "experiment": "X1_crosslingual_translate",
+  "translator": "facebook/nllb-200-distilled-600M",
+  "chrf_threshold": 45.0,
+  "beams": 4,
+  "gate": {
+    "de/authority": {
+      "kept": 43,
+      "total": 60,
+      "mean_chrf": 55.2
+    },
+    "fr/authority": {
+      "kept": 40,
+      "total": 60,
+      "mean_chrf": 54.7
+    },
+    "it/authority": {
+      "kept": 25,
+      "total": 60,
+      "mean_chrf": 50.4
+    },
+    "zh/authority": {
+      "kept": 38,
+      "total": 60,
+      "mean_chrf": 53.5
+    },
+    "de/bandwagon": {
+      "kept": 37,
+      "total": 60,
+      "mean_chrf": 52.7
+    },
+    "fr/bandwagon": {
+      "kept": 41,
+      "total": 60,
+      "mean_chrf": 55.8
+    },
+    "it/bandwagon": {
+      "kept": 39,
+      "total": 60,
+      "mean_chrf": 52.3
+    },
+    "zh/bandwagon": {
+      "kept": 30,
+      "total": 60,
+      "mean_chrf": 48.4
+    },
+    "de/sycophancy": {
+      "kept": 28,
+      "total": 60,
+      "mean_chrf": 48.3
+    },
+    "fr/sycophancy": {
+      "kept": 18,
+      "total": 60,
+      "mean_chrf": 44.4
+    },
+    "it/sycophancy": {
+      "kept": 23,
+      "total": 60,
+      "mean_chrf": 48.0
+    },
+    "zh/sycophancy": {
+      "kept": 14,
+      "total": 60,
+      "mean_chrf": 43.1
+    },
+    "de/free_ride": {
+      "kept": 30,
+      "total": 60,
+      "mean_chrf": 48.9
+    },
+    "fr/free_ride": {
+      "kept": 30,
+      "total": 60,
+      "mean_chrf": 51.3
+    },
+    "it/free_ride": {
+      "kept": 36,
+      "total": 60,
+      "mean_chrf": 52.5
+    },
+    "zh/free_ride": {
+      "kept": 46,
+      "total": 60,
+      "mean_chrf": 53.3
+    },
+    "de/collude": {
+      "kept": 13,
+      "total": 60,
+      "mean_chrf": 45.1
+    },
+    "fr/collude": {
+      "kept": 13,
+      "total": 60,
+      "mean_chrf": 50.7
+    },
+    "it/collude": {
+      "kept": 14,
+      "total": 60,
+      "mean_chrf": 45.1
+    },
+    "zh/collude": {
+      "kept": 7,
+      "total": 60,
+      "mean_chrf": 41.4
+    },
+    "de/deceive": {
+      "kept": 36,
+      "total": 60,
+      "mean_chrf": 54.5
+    },
+    "fr/deceive": {
+      "kept": 35,
+      "total": 60,
+      "mean_chrf": 55.7
+    },
+    "it/deceive": {
+      "kept": 34,
+      "total": 60,
+      "mean_chrf": 52.6
+    },
+    "zh/deceive": {
+      "kept": 28,
+      "total": 60,
+      "mean_chrf": 49.4
+    }
+  }
+}

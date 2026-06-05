@@ -1,0 +1,54 @@
+{
+  "experiment": "M5_panel_cis",
+  "note": "per-panel group mean, then SE over panels (clusters agents by panel)",
+  "detectors": {
+    "public_only": {
+      "colluder": {
+        "mean": 0.025,
+        "se_clustered": 0.025,
+        "n_panels": 10
+      },
+      "honest": {
+        "mean": 0.004,
+        "se_clustered": 0.004,
+        "n_panels": 20
+      }
+    },
+    "public_plus_gt": {
+      "colluder": {
+        "mean": 0.8,
+        "se_clustered": 0.05,
+        "n_panels": 10
+      },
+      "honest": {
+        "mean": 0.013,
+        "se_clustered": 0.007,
+        "n_panels": 20
+      }
+    },
+    "private": {
+      "colluder": {
+        "mean": 0.45,
+        "se_clustered": 0.082,
+        "n_panels": 10
+      },
+      "honest": {
+        "mean": 0.0,
+        "se_clustered": 0.0,
+        "n_panels": 20
+      }
+    },
+    "accept_vote": {
+      "colluder": {
+        "mean": 1.0,
+        "se_clustered": 0.0,
+        "n_panels": 10
+      },
+      "honest": {
+        "mean": 0.0,
+        "se_clustered": 0.0,
+        "n_panels": 20
+      }
+    }
+  }
+}

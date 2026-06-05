@@ -1,0 +1,34 @@
+{
+  "experiment": "M3f",
+  "model": "llama3.1:8b",
+  "dial": "free_ride",
+  "strengths": [
+    "none",
+    "mild",
+    "moderate",
+    "strong"
+  ],
+  "per_strength": {
+    "none": {
+      "mean_words_unattributed": 260.7,
+      "mean_words_signed": 289.9,
+      "n": 15
+    },
+    "mild": {
+      "mean_words_unattributed": 100.7,
+      "mean_words_signed": 205.6,
+      "n": 15
+    },
+    "moderate": {
+      "mean_words_unattributed": 112.5,
+      "mean_words_signed": 222.7,
+      "n": 15
+    },
+    "strong": {
+      "mean_words_unattributed": 22.7,
+      "mean_words_signed": 75.7,
+      "n": 15
+    }
+  },
+  "effort_drop_none_minus_strong_words": 238.0
+}
