@@ -430,8 +430,13 @@ func (h *Handler) HandleAgentControlEvent(env *eventsv1.EventEnvelope, currentTi
 		h.st.queuedAt[effective] = append(h.st.queuedAt[effective], queuedOp{
 			label: "AutoOpenChannel",
 			apply: func() error {
-				_, err := h.openChannelAt(openReq, effective)
-				return err
+				// Best-effort: an agent (especially an LLM) may propose a
+				// non-existent member or an otherwise invalid open. Such a
+				// request must not crash the panel -- the OpenChannelReq is
+				// already recorded on L_ctrl, so the attempt is preserved; we
+				// simply decline to mint the channel.
+				_, _ = h.openChannelAt(openReq, effective)
+				return nil
 			},
 		})
 		h.st.mu.Unlock()

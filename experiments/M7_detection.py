@@ -93,6 +93,9 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--indexes", default=f"{REPO/'runs'/'M6'/'index.json'},{REPO/'runs'/'M5'/'index.json'}")
     ap.add_argument("--judge-model", default="qwen2.5:14b-instruct")
+    ap.add_argument("--out", default=str(DATA / "M7_detection_results.json"),
+                    help="output path (use a separate file for the autonomous run so the baseline "
+                    "M7_detection_results.json is not overwritten)")
     args = ap.parse_args(argv)
 
     # Build the ground-truth label per agent per panel from the sweep indexes.
@@ -148,13 +151,13 @@ def main(argv=None) -> int:
                "n_biased": len(biased_pairs), "n_honest": n_honest},
            "per_dial": per_dial,
            "confusion": {g: dict(confusion[g]) for g in confusion}}
-    (DATA / "M7_detection_results.json").write_text(json.dumps(out, indent=2))
+    Path(args.out).write_text(json.dumps(out, indent=2))
     print("\n=== M7 detection ===")
     print(f"biased recall (caught as biased): {out['binary_detection']['biased_recall']}  "
           f"honest FPR: {out['binary_detection']['honest_false_positive_rate']}")
     for d, s in per_dial.items():
         print(f"  {d:11s} n={s['n']:3d}  detected_as_biased={s['detected_as_biased']}  exact_dial={s['exact_dial']}")
-    print(f"Wrote {DATA/'M7_detection_results.json'}")
+    print(f"Wrote {args.out}")
     return 0
 
 
