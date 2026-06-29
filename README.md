@@ -44,24 +44,32 @@ honest. Every reported quantity is recomputed from the signed manifest.
 The kernel needs Go (≥1.23); the agent needs Python (≥3.11).
 
 ```
-make build          # Go binaries -> bin/
+make build          # Go binaries -> bin/ (kernel + panel)
 make agent-install  # Python virtualenv at agent/.venv
 ```
 
-Agents call a local model server; the experiments default to a local
-[`ollama`](https://ollama.com). One colluding panel, end to end:
+**Plug in a local model.** The agents call a local
+[`ollama`](https://ollama.com) server:
 
 ```
-python experiments/M5_panel_headline.py --smoke --model llama3.1:8b
-python experiments/M5_metrics.py --manifest runs/M5/smoke_collude.json.gz
+ollama serve                 # start it if it is not already running (localhost:11434)
+ollama pull llama3.1:8b      # any instruct model works; pass it with --model
 ```
 
-To replay a recorded run in the browser and toggle the public ↔ glass-box views:
+**Run the simulation with agents.** One command runs a scenario through the
+kernel with five model-backed agents and exports it for the viewer:
+
+```
+python experiments/run_scenario.py scenarios/demo_collude.yaml --model llama3.1:8b
+```
+
+Or run a single panel directly:
+`python experiments/M5_panel_headline.py --smoke --model llama3.1:8b`.
+
+**View and record the run.** Serve the frontend, open the printed address, pick
+the run, press play, and toggle GOD'S-EYE / PUBLIC RECORD to show the
+operator-versus-auditor asymmetry.
 
 ```
 cd frontend && python -m http.server   # then open the printed address
 ```
-
-## License
-
-Apache-2.0.
